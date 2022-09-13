@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'github-file-upload';
+  gitUrl = 'https://api.github.com/repos';
+  constructor(private http:HttpClient){
+
+  }
+  // https://api.github.com/repos/batman/toys/contents/sample.pdf
+
+  // /repos/{owner}/{repo}/contents/{path}
+
+
+  ngOnInit(){
+
+  }
 }
