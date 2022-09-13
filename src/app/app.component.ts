@@ -23,32 +23,31 @@ export class AppComponent {
   saveFile() {
     // https://www.npmjs.com/package/yaml
     // https://eemeli.org/yaml/#creating-documents
-    const doc = new Document(['some', 'values', { balloons: 99 }])
+    const doc = new Document(['some', 'values', { balloons: 9 }])
     doc.commentBefore = ' A commented document'
     console.log(String(doc));
     let text = btoa(String(doc))
     console.log(text);
     this.api.getSha().subscribe((res: any) => {
       console.log(res);
-
       let sha = res.sha;
       if (sha) {
         //update 
         this.payload = { "message": "my commit message", "sha": sha, "committer": { "name": "venkadesh.s", "email": "venkadesh.s@knackforge.com" }, "content": text }
-        this.api.save(this.payload).subscribe((res) => {
+        this.api.save(this.payload).subscribe((res:any) => {
           console.log(res);
           alert('Updated')
         })
-      }
+      } 
     }, (err) => {
-      if (err.status == 404) {
+      // if (err.status == 404) {
         //insert
         this.payload = { "message": "my commit message", "committer": { "name": "venkadesh.s", "email": "venkadesh.s@knackforge.com" }, "content": text }
-        this.api.save(this.payload).subscribe((res) => {
+        this.api.save(this.payload).subscribe((res:any) => {
           console.log(res);
           alert('Added')
         })
-      }
+      // }
     })
   }
 }
