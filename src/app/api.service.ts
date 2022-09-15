@@ -10,7 +10,7 @@ export class ApiService {
 
   username = 'venkadeshseenu';
   repo = 'github-file-Save';
-  token = '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'; //replace your token later
+  token = 'ghp_y7rduTyeqTPJR1$$$QcZGGSQRO4suglzq2JpVhu'; //remove $$$ symbol  in the token or  replace your token later
  
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',

@@ -1,3 +1,75 @@
-<h1>GitHub Save File</h1>
-
-<button (click)="saveFile()"> Submit </button>
+<h1 class="text-center mt-5">GitHub Save File</h1>
+<div class="container">
+    <div class="card m-6 card-custom">
+        <div class="card-body">
+        <div class="card-title text-center">
+            <h3>Provide details for configuration.yaml file</h3>
+        </div>
+        <form [formGroup]="myform" (ngSubmit)="onSubmit(myform.value)">
+            <div class="form-group"
+                [ngClass]="{'has-error': !formData['cOption'].valid && formData['cOption'].touched}">
+                <label>TechStack</label>
+                <select class="form-control" name="cOption" formControlName="cOption">
+                    <option value="">--Choose the option--</option>
+                    <option value="Java">Java</option>
+                    <option value="Angular">Angular</option>
+                    <option value="dotnet">Dotnet</option>
+                    <option value="Python">Python</option>
+                </select>
+                <div *ngIf="formData['cOption'].touched && formData['cOption'].errors">
+                    <div class="alert alert-danger" *ngIf="formData['cOption']">
+                        The TechStack is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': !formData['docker'].valid && formData['docker'].touched}">
+                <label>Docker</label>
+                <select class="form-control" name="docker" formControlName="docker">
+                    <option value="">--Choose the option--</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+                <div *ngIf="formData['docker'].touched && formData['docker'].errors">
+                    <div class="alert alert-danger" *ngIf="formData['docker']">
+                        The Docker is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': !formData['sonar'].valid && formData['sonar'].touched}">
+                <label>SonarQube</label>
+                <select class="form-control" name="sonar" formControlName="sonar">
+                    <option value="">--Choose the option--</option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+                <div *ngIf="formData['sonar'].touched && formData['sonar'].errors">
+                    <div class="alert alert-danger" *ngIf="formData['sonar']">
+                        The SonarQube is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': !formData['gitUrl'].valid && formData['gitUrl'].touched}">
+                <label>Github Url</label>
+                <input type="text" class="form-control" placeholder="Enter Github Url" formControlName="gitUrl"/>
+                <div *ngIf="formData['gitUrl'].touched && formData['gitUrl'].errors">
+                    <div class="alert alert-danger" *ngIf="formData['gitUrl']">
+                        The Github url is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': !formData['branch'].valid && formData['branch'].touched}">
+                <label>Github Branch</label>
+                <input type="text" class="form-control" placeholder="Enter Github Branch" formControlName="branch"/>
+                <div *ngIf="formData['branch'].touched && formData['branch'].errors">
+                    <div class="alert alert-danger" *ngIf="formData['branch']">
+                        The Git Branch is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center mt-3">
+                <input type="submit" class="form-group btn btn-primary" value="Commit to Github"/>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
